@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <title>The Game</title>
+</head>
+
+<body>
+  <div class="screen" id="screen">
+    
+    <div class="interface">
+      <div class="score" id="scoreField">0</div>
+      <div class="dialog" id="startDialog">press to start</div>
+      <div class="dialog" id="deathDialog" style="display: none">
+        <div class="state">
+          <div class="score-now">Score: <span id="score-now"></span></div>
+          <div class="score-best">Best: <span id="score-best"></span></div>
+        </div>
+        <button class="button" id="death-dialog-btn">ok</button>
+      </div>
+    </div>
+    
+    <div class="game">
+      <div class="layout" id="layout">
+      </div>
+      <div class="earth"></div>
+    </div>
+    
+  </div>
+  
+  
+  <script src="pipe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="upPipe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="downPipe.js" type="text/javascript" charset="utf-8"></script>
+  <script src="pairPipes.js" type="text/javascript" charset="utf-8"></script>
+  <script src="bird.js" type="text/javascript" charset="utf-8"></script>
+  <script src="game.js" type="text/javascript" charset="utf-8"></script>
+  <script src="main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
