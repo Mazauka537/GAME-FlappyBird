@@ -2,6 +2,7 @@ class Game {
   constructor(layout) {
     this.layout = layout;
     this.scoreField = document.getElementById('scoreField');
+    this.interface = document.getElementById('interface');
     this.state = 'ready';
     this._score = 0;
     this.bestScore = 0;
@@ -31,7 +32,13 @@ class Game {
     this.state = 'death';
     document.getElementById('death-flash').style.animationName = 'death-flash';
     this.bird.elem.style.animationName = 'none';
-    document.getElementById('deathDialog').style.display = 'block';
+    
+    let dialog = document.getElementById('deathDialog');
+    dialog.style.top = +(this.interface.offsetHeight * 2) + 'px';
+    dialog.style.display = 'block';
+    setTimeout(() => {
+      dialog.style.top = 50 + '%';
+    }, 200);
     this.showDeathDialog();
   }
 
