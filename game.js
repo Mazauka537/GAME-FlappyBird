@@ -9,6 +9,7 @@ class Game {
     this.timer = undefined;
     this.pipes = [new PairPipes(layout)];
     this.pipesSpeed = 1.5; //px
+    this.earth = new Earth(layout);
     this.horizontalPipeDispance = 160;
     this.bird = new Bird(layout);
     document.getElementById('screen').onclick = () => this.click();
@@ -62,6 +63,8 @@ class Game {
       this.pipes[i].move(this.pipesSpeed);
     }
     
+    this.earth.move(this.pipesSpeed);
+    
     if (this.pipes[this.pipes.length - 1].upPipe.right > this.horizontalPipeDispance) {
       this.createNewPipes();
     }
@@ -72,8 +75,6 @@ class Game {
     }
     
     this.bird.move();
-    
-    
     
     let left = this.layout.offsetWidth - this.pipes[0].upPipe.right - this.pipes[0].upPipe.width;
     
