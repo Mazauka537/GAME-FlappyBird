@@ -5,14 +5,15 @@ class Bird {
     this.width = 34;
     this.left = 75;
     this._bottom = this.layout.offsetHeight / 2;
-    
+    this._rotate = 0;
+
     this.speed = 0;
     this.a = 0.35;
     this.maxSpeed = 7;
-    
+
     this.elem = this.createBird();
   }
-  
+
   createBird() {
     let div = document.createElement('div');
     div.classList.add('bird');
@@ -20,23 +21,40 @@ class Bird {
     div.style.height = this.height + 'px';
     div.style.left = this.left + 'px';
     div.style.bottom = this.bottom + 'px';
+    div.style.transform = 'rotateZ(0deg)';
     this.layout.append(div);
     return div;
   }
-  
+
   move() {
     this.bottom -= this.speed;
     this.speed += this.a;
     if (this.speed > this.maxSpeed)
       this.speed = this.maxSpeed;
+
+    let minRotate = -15;
+    let maxRotate = 80;
+    let rotate = this.speed * 16 - 50;
+    if (rotate < minRotate) rotate = minRotate;
+    if (rotate > maxRotate) rotate = maxRotate;
+    this.rotate = rotate;
   }
-  
+
   get bottom() {
     return this._bottom;
   }
-  
+
   set bottom(value) {
     this._bottom = value;
     this.elem.style.bottom = value + 'px';
+  }
+
+  get rotate() {
+    return this._rotate;
+  }
+
+  set rotate(value) {
+    this._rotate = value;
+    this.elem.style.transform = 'rotateZ(' + value + 'deg)';
   }
 }
