@@ -28,16 +28,20 @@ class Bird {
 
   move() {
     this.bottom -= this.speed;
-    this.speed += this.a;
-    if (this.speed > this.maxSpeed)
-      this.speed = this.maxSpeed;
+    if (this.bottom > 0) {
+      this.speed += this.a;
+      if (this.speed > this.maxSpeed)
+        this.speed = this.maxSpeed;
 
-    let minRotate = -15;
-    let maxRotate = 80;
-    let rotate = this.speed * 16 - 50;
-    if (rotate < minRotate) rotate = minRotate;
-    if (rotate > maxRotate) rotate = maxRotate;
-    this.rotate = rotate;
+      let minRotate = -15;
+      let maxRotate = 90;
+      let rotate = this.speed * 16 - 50;
+      if (rotate < minRotate) rotate = minRotate;
+      if (rotate > maxRotate) rotate = maxRotate;
+      this.rotate = rotate;
+    } else {
+      this.speed = 0;
+    }
   }
 
   get bottom() {

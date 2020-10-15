@@ -31,6 +31,26 @@ body {
   z-index: 100;
 }
 
+.death-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0;
+  animation: none 0.4s;
+}
+
+@keyframes death-flash {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .game {
   z-index: 90;
   display: flex;
