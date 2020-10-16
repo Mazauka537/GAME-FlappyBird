@@ -13,7 +13,14 @@ class Game {
     this.horizontalPipeDispance = 160;
     this.bird = new Bird(layout);
     document.getElementById('screen').onclick = () => this.click();
-    document.getElementById('death-dialog-btn').onclick = (e) => {
+    this.deathDialog = document.getElementById('death-dialog-btn');
+    this.deathDialog.ontouchstart = (e) => {
+      this.deathDialog.style.transform = 'translateY(3px)';
+    }
+    this.deathDialog.ontouchend = (e) => {
+      this.deathDialog.style.transform = 'translateY(0px)';
+    }
+    this.deathDialog.onclick = (e) => {
       e.stopPropagation();
       this.reload();
     }
@@ -34,6 +41,24 @@ class Game {
     this.bird.elem.style.animationName = 'none';
     
     let dialog = document.getElementById('deathDialog');
+    
+    let medal = 'none';
+    if (this.score > 9) {
+      medal = 'bronze';
+    }
+    if (this.score > 19) {
+      medal = 'silver';
+    }
+    if (this.score > 29) {
+      medal = 'gold';
+    }
+    if (this.score > 39) {
+      medal = 'platinum';
+    }
+    let med = document.getElementById('medal');
+    med.classList.remove('none', 'bronze', 'silver', 'gold', 'platinum');
+    med.classList.add(medal);
+    
     dialog.style.top = +(this.interface.offsetHeight * 2) + 'px';
     dialog.style.display = 'block';
     setTimeout(() => {
