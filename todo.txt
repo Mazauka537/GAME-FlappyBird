@@ -1,4 +1,0 @@
-1. Add animation to bird when state is ready. 
-2. Add dark screen when game is reseting.
-3. Add sounds. 
-4. Add collision with top. 

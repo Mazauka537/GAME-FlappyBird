@@ -12,6 +12,7 @@ class Game {
     this.earth = new Earth(layout);
     this.horizontalPipeDispance = 160;
     this.bird = new Bird(layout);
+    this.mute = false;
     document.getElementById('screen').onclick = () => this.click();
     this.deathDialog = document.getElementById('death-dialog-btn');
     this.deathDialog.ontouchstart = (e) => {
@@ -37,6 +38,9 @@ class Game {
   }
 
   stop() {
+    if (!this.mute) {
+      new Audio('Assets/die.wav').play();
+    }
     this.state = 'death';
     document.getElementById('death-flash').style.animationName = 'death-flash';
     this.bird.elem.style.animationName = 'none';
@@ -156,6 +160,9 @@ class Game {
 
     if (this.pipes[0].upPipe.right >= this.layout.offsetWidth - this.bird.left) {
       if (this.canGetPoint) {
+        if (!this.mute) {
+          new Audio('Assets/point.wav').play();
+        }
         this.score++;
       }
       this.canGetPoint = false;
@@ -169,6 +176,9 @@ class Game {
       this.start();
     }
     if (this.state == 'play') {
+      if (!this.mute) {
+        new Audio('Assets/wing.wav').play();
+      }
       this.bird.speed = -this.bird.maxSpeed;
     }
   }
