@@ -123,7 +123,16 @@ body {
   background-repeat: no-repeat;
   background-size: 400% 100%;
   transition: transform 0.2s;
-  animation: bird-fly 0.5s infinite steps(4);
+  animation: bird-ready-state 0.25s infinite ease-in-out alternate, bird-fly 0.5s infinite steps(4);
+}
+
+@keyframes bird-ready-state {
+  from {
+    transform: translateY(-4px);
+  } 
+  to {
+    transform: translateY(4px);
+  }
 }
 
 @keyframes bird-fly {
@@ -192,6 +201,7 @@ body {
   margin-bottom: 25px;
   position: relative;
   text-shadow: 0 0 2px #000;
+  padding-left: 4px;
 }
 
 .dialog .title::before {

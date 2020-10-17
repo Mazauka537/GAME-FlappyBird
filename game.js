@@ -31,7 +31,8 @@ class Game {
 
   start() {
     this.state = 'play';
-    this.bird.elem.style.animationDuration = '0.25s';
+    this.bird.elem.style.animationName = 'none, bird-fly';
+    this.bird.elem.style.animationDuration = '0.25s, 0.25s';
     document.getElementById('startDialog').style.display = 'none';
   }
 
@@ -70,8 +71,8 @@ class Game {
   reload() {
     this.state = 'ready';
     document.getElementById('death-flash').style.animationName = 'none';
-    this.bird.elem.style.animationName = 'bird-fly';
-    this.bird.elem.style.animationDuration = '0.5s';
+    this.bird.elem.style.animationName = 'bird-ready-state, bird-fly';
+    this.bird.elem.style.animationDuration = '0.25s, 0.5s';
     for (var i = 0; i < this.pipes.length; i++) {
       this.pipes[i].destroy();
     }
