@@ -69,21 +69,35 @@ class Game {
   }
 
   reload() {
+    let dflash = document.getElementById('death-flash');
+    dflash.style.animationName = 'none';
+    dflash.style.background = '#000';
+    dflash.style.opacity = 1;
+    document.getElementById('deathDialog').style.zIndex = 199;
+
+    setTimeout(() => {
+      this.bird.elem.style.animationName = 'bird-ready-state, bird-fly';
+      this.bird.elem.style.animationDuration = '0.25s, 0.5s';
+      for (var i = 0; i < this.pipes.length; i++) {
+        this.pipes[i].destroy();
+      }
+      this.pipes = [new PairPipes(this.layout)];
+
+      document.getElementById('deathDialog').style.display = 'none';
+      document.getElementById('deathDialog').style.zIndex = 201;
+      document.getElementById('startDialog').style.display = 'block';
+
     this.state = 'ready';
-    document.getElementById('death-flash').style.animationName = 'none';
-    this.bird.elem.style.animationName = 'bird-ready-state, bird-fly';
-    this.bird.elem.style.animationDuration = '0.25s, 0.5s';
-    for (var i = 0; i < this.pipes.length; i++) {
-      this.pipes[i].destroy();
-    }
-    this.pipes = [new PairPipes(this.layout)];
+      this.bird.bottom = this.layout.offsetHeight / 2;
+      this.bird.rotate = 0;
+      this.score = 0;
+      dflash.style.opacity = 0;
 
-    document.getElementById('deathDialog').style.display = 'none';
-    document.getElementById('startDialog').style.display = 'block';
-
-    this.bird.bottom = this.layout.offsetHeight / 2;
-    this.bird.rotate = 0;
-    this.score = 0;
+      setTimeout(() => {
+        dflash.style.background = '#fff';
+        
+      }, 300);
+    }, 300);
   }
 
   showDeathDialog() {
