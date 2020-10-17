@@ -26,7 +26,7 @@ class Game {
     }
     this.timer = setInterval(() => {
       this.frame();
-    }, 15); 
+    }, 15);
   }
 
   start() {
@@ -39,9 +39,9 @@ class Game {
     this.state = 'death';
     document.getElementById('death-flash').style.animationName = 'death-flash';
     this.bird.elem.style.animationName = 'none';
-    
+
     let dialog = document.getElementById('deathDialog');
-    
+
     let medal = 'none';
     if (this.score > 9) {
       medal = 'bronze';
@@ -58,7 +58,7 @@ class Game {
     let med = document.getElementById('medal');
     med.classList.remove('none', 'bronze', 'silver', 'gold', 'platinum');
     med.classList.add(medal);
-    
+
     dialog.style.top = +(this.interface.offsetHeight * 2) + 'px';
     dialog.style.display = 'block';
     setTimeout(() => {
@@ -115,23 +115,23 @@ class Game {
 
     if (this.state == 'play' || this.state == 'death') {
       this.bird.move();
-    } 
+    }
 
     if (this.state == 'play') {
       this.checkCollision();
     }
-    
+
   }
 
   checkCollision() {
     let left = this.layout.offsetWidth - this.pipes[0].upPipe.right - this.pipes[0].upPipe.width;
 
-    if (left + this.pipes[0].upPipe.width> this.bird.left && left < this.bird.left + this.bird.width - 3) {
+    if (left + this.pipes[0].upPipe.width > this.bird.left && left < this.bird.left + this.bird.width - 3) {
       if (this.bird.bottom < this.pipes[0].downPipe.height || this.layout.offsetHeight - this.bird.bottom - this.bird.height < this.pipes[0].upPipe.height) {
         this.stop();
       }
     }
-    
+
     if (this.bird.bottom <= 0) {
       this.stop();
     }
@@ -143,9 +143,9 @@ class Game {
       this.canGetPoint = false;
     } else {
       this.canGetPoint = true;
-    } 
+    }
   }
-  
+
   click() {
     if (this.state == 'ready') {
       this.start();

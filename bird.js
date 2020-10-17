@@ -29,6 +29,9 @@ class Bird {
   move() {
     this.bottom -= this.speed;
     if (this.bottom > 0) {
+      if (this.bottom > this.layout.offsetHeight) {
+        this.speed = 0.5;
+      }
       this.speed += this.a;
       if (this.speed > this.maxSpeed)
         this.speed = this.maxSpeed;
