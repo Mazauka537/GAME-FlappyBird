@@ -87,7 +87,7 @@ class Game {
       document.getElementById('deathDialog').style.zIndex = 201;
       document.getElementById('startDialog').style.display = 'block';
 
-    this.state = 'ready';
+      this.state = 'ready';
       this.bird.bottom = this.layout.offsetHeight / 2;
       this.bird.rotate = 0;
       this.score = 0;
@@ -95,7 +95,7 @@ class Game {
 
       setTimeout(() => {
         dflash.style.background = '#fff';
-        
+
       }, 300);
     }, 300);
   }
@@ -136,6 +136,9 @@ class Game {
       this.checkCollision();
     }
 
+    if (this.state == 'ready') {
+      this.earth.move(this.pipesSpeed);
+    }
   }
 
   checkCollision() {
