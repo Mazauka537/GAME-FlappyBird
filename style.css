@@ -120,7 +120,7 @@ body {
 
 .bird {
   position: absolute;
-  background: url(Assets/spr_b1_strip4.png);
+  background: url(Assets/spr_b3_strip4.png);
   z-index: 91;
   background-repeat: no-repeat;
   background-size: 400% 100%;
@@ -158,7 +158,10 @@ body {
   color: #fff;
   min-width: 280px;
   text-align: center;
-  text-shadow: 0 0 6px #000;
+  text-shadow: 0 2px 0px #000,
+  2px 0 0px #000,
+  -2px 0 0px #000,
+  0 -2px 0px #000;
 }
 
 #startDialog::before {
@@ -241,7 +244,10 @@ body {
 .score-value {
   font-size: 23px;
   color: #fff;
-  text-shadow: 0 0 2px #000;
+  text-shadow: 0 2px 0px #000, 
+  2px 0 0px #000, 
+  -2px 0 0px #000, 
+  0 -2px 0px #000;
 }
 
 .medal {
@@ -306,7 +312,10 @@ body {
   font-weight: bold;
   font-size: 32px;
   color: #fff;
-  text-shadow: 0 0 6px #000;
+  text-shadow: 0 2px 0px #000, 
+  2px 0 0px #000, 
+  -2px 0 0px #000, 
+  0 -2px 0px #000; 
 }
 
 @font-face {

@@ -12,7 +12,7 @@ class Game {
     this.earth = new Earth(layout);
     this.horizontalPipeDispance = 160;
     this.bird = new Bird(layout);
-    this.mute = false;
+    this.mute = true;
     document.getElementById('screen').onclick = () => this.click();
     this.deathDialog = document.getElementById('death-dialog-btn');
     this.deathDialog.ontouchstart = (e) => {
